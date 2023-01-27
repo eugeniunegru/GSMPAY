@@ -8,8 +8,10 @@ const DevicePage = () => {
     const [device,setDevice]=useState({info:[]})
     const {id}=useParams()
     useEffect(()=>{
-            fetchOneDevice(id).then(data=>setDevice(data))
-    })
+            fetchOneDevice(id).then(data=>{console.log(data);setDevice(data)})
+
+    },[])
+    console.log(device)
     return (
         <Container>
             <Row className="">
@@ -42,7 +44,7 @@ const DevicePage = () => {
                 <h1>Specificatii</h1>
                 {device.info.map((info,index)=>
                     <Row key={info.id} style={{background:index%2===0?'lightgray':'transparent',padding:10}}>
-                        {info.title}: {info.description}
+                        {info.name}: {info.description}
                     </Row>
 
                 )}

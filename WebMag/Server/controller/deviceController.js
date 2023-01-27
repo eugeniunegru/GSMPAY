@@ -9,15 +9,15 @@ class DeviceController{
              const {img}=req.files
              let fileName = uuid.v4()+'.jpg'
              img.mv(path.resolve(__dirname,'..','static',fileName))
-            const device= await Device.create({name,price,brandId,typeId,img:fileName})
-            console.log(info)
+            const device= await Device.create({name,price,typeId,brandId,img:fileName})
+            console.log(typeId,brandId)
             if(info){
 
                  info=JSON.parse(info)
                  info.forEach(i=>
                      DeviceInfo.create(
                          {
-                             title:i.title,
+                             name:i.title,
                              description:i.description,
                              deviceId:device.id
                          })
@@ -52,7 +52,8 @@ class DeviceController{
         const {id}=req.params
         const device=await Device.findOne({where:{id},
         include:[{model:DeviceInfo, as: 'info'}]
-        })
+        },
+        )
         return res.json(device)
     }
 

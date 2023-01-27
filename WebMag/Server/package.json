@@ -52,6 +52,7 @@
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.40",
     "ms": "^2.0.0",
+    "mysql2": "^3.0.1",
     "negotiator": "^0.6.3",
     "object-assign": "^4.1.1",
     "object-inspect": "^1.12.2",
@@ -101,9 +102,14 @@
     "yallist": "^4.0.0"
   },
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "migrate:up": "npx sequelize-cli db:migrate",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "sequelize-cli": "^6.6.0"
+  }
 }

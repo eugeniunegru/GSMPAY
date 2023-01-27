@@ -37,12 +37,14 @@ const Rating=sequilize.define('rating',{
 })
 const DeviceInfo=sequilize.define('device_info',{
     id:{type:DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
-    name:{type:DataTypes.STRING,allowNull:false,unique:true}
+    name:{type:DataTypes.STRING,allowNull:false},
+    description:{type:DataTypes.STRING,allowNull:false}
 })
 
 const TypeBrand=sequilize.define('type_brand',{
     id:{type:DataTypes.INTEGER,primaryKey:true,autoIncrement:true}
 })
+
 User.hasOne(Basket)
 Basket.belongsTo(User)
 
@@ -57,6 +59,9 @@ Device.belongsTo(Type)
 
 Brand.hasMany(Device)
 Device.belongsTo(Brand)
+
+Device.hasMany(BasketDevice)
+BasketDevice.belongsTo(Device)
 
 Device.hasMany(Rating)
 Rating.belongsTo(Device)

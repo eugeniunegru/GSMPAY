@@ -13,7 +13,7 @@ const Shop = observer(() => {
     useEffect(()=>{
         fetchType().then(data=>device.setTypes(data))
         fetchBrand().then(data=>device.setBrands(data))
-    },[device])
+    },[])
 
     useEffect(()=>{
         fetchDevices(device.SelectedType.id,device.SelectedBrand.id,device.page,2).then(data=>{
