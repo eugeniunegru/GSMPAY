@@ -1,10 +1,10 @@
 const Router=require('express')
-const brandController=require('../controller/brandController')
+const basketController=require('../controller/basketController')
 const checkRole=require('../middleware/checkRoleMiddleware')
 const router=new Router()
 
-router.post('/',checkRole('USER'),brandController.create)
-router.get('/',brandController.getAll)
+router.post('/',checkRole('ADMIN'),basketController.create)
+router.get('/:userId',checkRole('ADMIN'),basketController.getAll)
 
 
 module.exports=router

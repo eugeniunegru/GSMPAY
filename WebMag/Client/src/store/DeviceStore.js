@@ -4,6 +4,7 @@ export default class DeviceStore{
     constructor() {
         this._types=[]
         this._brands=[]
+        this._basket=[]
         this._devices=[{}]
         this._selectedType={}
         this._selectedBrand={}
@@ -20,6 +21,9 @@ export default class DeviceStore{
     }
     setDevices(devices){
         this._devices=devices
+    }
+    setBasket(basket){
+        this._basket=basket
     }
     setSelectedType(selectType){
         this._selectedType=selectType
@@ -41,6 +45,9 @@ export default class DeviceStore{
     }
     get Devices(){
         return this._devices
+    }
+    get Basket(){
+        return this._basket
     }
     get SelectedType(){
         this.setPage(1)

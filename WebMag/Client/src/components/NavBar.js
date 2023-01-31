@@ -3,7 +3,7 @@ import {Context} from "../index";
 import {Navbar, Nav, Container, Button} from "react-bootstrap";
 import {observer} from "mobx-react-lite";
 import {useNavigate} from "react-router-dom";
-import {ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
+import {ADMIN_ROUTE, BASKET_ROUTE, LOGIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
 
 const NavBar = observer(() => {
     const navigate=useNavigate();
@@ -27,6 +27,10 @@ const NavBar = observer(() => {
                                 style={{maxHeight: '100px'}}
                                 navbarScroll
                             >
+                                <Button className="me-1"
+                                        variant="outline-success"
+                                        onClick={() => navigate(BASKET_ROUTE+'/'+user.User.id)
+                                        }>Cos</Button>
                                 <Button className="me-1"
                                         variant="outline-success"
                                         onClick={() => navigate(ADMIN_ROUTE)
